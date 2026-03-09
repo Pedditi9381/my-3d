@@ -1,0 +1,254 @@
+[
+    {
+        "text": [
+            {
+                "text": "Storming of the Bastille (July 14, 1789)",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 1,
+                "second_value": 219
+            }
+        },
+        "position": {
+            "x": 0.0084,
+            "y": 0.9217,
+            "z": -0.1851
+        },
+        "label_name": "label-001"
+    },
+    {
+        "text": [
+            {
+                "text": "Demonstration of 20 June 1792",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 220,
+                "second_value": 499
+            }
+        },
+        "position": {
+            "x": 0.0,
+            "y": 2.0731,
+            "z": 0.0
+        },
+        "label_name": "label-002"
+    },
+    {
+        "text": [
+            {
+                "text": "Public execution of King Louis XVI of France.",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 500,
+                "second_value": 580
+            }
+        },
+        "position": {
+            "x": 0.1848,
+            "y": 2.5824,
+            "z": -0.8628
+        },
+        "label_name": "label-003"
+    },
+    {
+        "text": [
+            {
+                "text": "Jacobin leadership",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 580,
+                "second_value": 670
+            }
+        },
+        "position": {
+            "x": -0.0096,
+            "y": 2.3622,
+            "z": -0.0
+        },
+        "label_name": "label-004"
+    },
+    {
+        "text": [
+            {
+                "text": "Maximilien Robespierre",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 690,
+                "second_value": 760
+            }
+        },
+        "position": {
+            "x": -0.0162,
+            "y": 2.2034,
+            "z": -0.0
+        },
+        "label_name": "label-005"
+    },
+    {
+        "text": [
+            {
+                "text": "Batavian Republic",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 761,
+                "second_value": 984
+            }
+        },
+        "position": {
+            "x": -0.1277,
+            "y": 1.5311,
+            "z": 0.0219
+        },
+        "label_name": "label-006"
+    },
+    {
+        "text": [
+            {
+                "text": "Belgium",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 761,
+                "second_value": 984
+            }
+        },
+        "position": {
+            "x": -0.0691,
+            "y": 0.7804,
+            "z": 0.0189
+        },
+        "label_name": "label-007"
+    },
+    {
+        "text": [
+            {
+                "text": "Helvetic Republic",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 761,
+                "second_value": 984
+            }
+        },
+        "position": {
+            "x": -0.0691,
+            "y": 0.7804,
+            "z": 0.0189
+        },
+        "label_name": "label-008"
+    },
+    {
+        "text": [
+            {
+                "text": "Cisalpine Republic",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 761,
+                "second_value": 984
+            }
+        },
+        "position": {
+            "x": -0.0691,
+            "y": 0.7804,
+            "z": 0.0189
+        },
+        "label_name": "label-009"
+    },
+    {
+        "text": [
+            {
+                "text": "Jacobin ideas spread",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 761,
+                "second_value": 984
+            }
+        },
+        "position": {
+            "x": 0.0361,
+            "y": 2.1358,
+            "z": -0.0091
+        },
+        "label_name": "label-010"
+    },
+    {
+        "text": [
+            {
+                "text": "Closure of the Jacobin Club in 1794",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 985,
+                "second_value": 1160
+            }
+        },
+        "position": {
+            "x": 0.0058,
+            "y": 1.9337,
+            "z": -0.5087
+        },
+        "label_name": "label-011"
+    },
+    {
+        "text": [
+            {
+                "text": "Napoleon Bonaparte to seize power in 1799",
+                "lang": "en"
+            }
+        ],
+        "isAnimation": true,
+        "animation": {
+            "frame": {
+                "first_value": 1161,
+                "second_value": 1320
+            }
+        },
+        "position": {
+            "x": 0.0587,
+            "y": 1.0434,
+            "z": 1.1805
+        },
+        "label_name": "label-012"
+    }
+]
