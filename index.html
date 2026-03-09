@@ -8,19 +8,17 @@
         init: function () {
           this.el.addEventListener('model-loaded', () => {
             const mesh = this.el.getObject3D('mesh');
-            // JSON File Name Updated here
+            // Adding .json extension here
             fetch('CBSE_X_SOC_L1_02Nationalism_Birth_dot_labels.json')
               .then(res => res.json())
               .then(data => {
                 data.labels.forEach(config => {
-                  // Blender lo unna Label-001 names vethukuthundi
                   const target = mesh.getObjectByName(config.name);
                   if (target) {
                     const worldPos = new THREE.Vector3();
                     target.getWorldPosition(worldPos);
                     let textEl = document.createElement('a-text');
                     textEl.setAttribute('value', config.title);
-                    // Position adjustment for better visibility in VR
                     textEl.setAttribute('position', `${worldPos.x} ${worldPos.y + 0.3} ${worldPos.z}`);
                     textEl.setAttribute('align', 'center');
                     textEl.setAttribute('color', 'yellow');
@@ -28,8 +26,7 @@
                     this.el.sceneEl.appendChild(textEl);
                   }
                 });
-              })
-              .catch(err => console.error("JSON Error:", err));
+              }).catch(err => console.log("JSON Error: ", err));
           });
         }
       });
@@ -42,12 +39,7 @@
         <audio id="bgVoice" src="CBSE_X_SOC_L1_02Nationalism_Birth.mp3" preload="auto"></audio>
       </a-assets>
 
-      <a-entity 
-        gltf-model="#edu-model" 
-        map-labels 
-        position="0 1 -4" 
-        animation-mixer>
-      </a-entity>
+      <a-entity gltf-model="#edu-model" map-labels position="0 1 -4" animation-mixer></a-entity>
 
       <a-entity sound="src: #bgVoice; autoplay: true; volume: 1"></a-entity>
 
