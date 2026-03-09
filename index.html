@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script>
+  // JSON nunchi labels load chese logic
+  AFRAME.registerComponent('lesson-labels', {
+    init: function () {
+      fetch('CBSE_X_SOC_L1_02Nationalism_Birth_dot_labels.json') // Nee JSON file name ikkada correct ga undali
+        .then(response => response.json())
+        .then(data => {
+          data.labels.forEach(item => {
+            let textEl = document.createElement('a-text');
+            textEl.setAttribute('value', item.title); // JSON lo unna text field
+            textEl.setAttribute('position', item.pos); // JSON lo unna position (e.g. "1 2 -3")
+            textEl.setAttribute('color', '#000');
+            textEl.setAttribute('align', 'center');
+            textEl.setAttribute('scale', '2 2 2');
+            this.el.appendChild(textEl);
+          });
+        });
+    }
+  });
+</script>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
   </head>
   <body>
+    <a-scene lesson-labels>
+  <a-assets>
+    <a-asset-item id="edu-model" src="CBSE_X_SOC_L1_02Nationalism_Birth.glb"></a-asset-item>
+    
+    <audio id="bgVoice" src="CBSE_X_SOC_L1_02Nationalism_Birth.mp3" preload="auto"></audio>
+  </a-assets>
+
+  <a-entity gltf-model="#edu-model" position="0 1 -4" scale="1 1 1" animation-mixer></a-entity>
+
+  <a-entity sound="src: #bgVoice; autoplay: true; volume: 1"></a-entity>
+
+  <a-sky color="#87CEEB"></a-sky>
+  <a-entity camera look-controls position="0 1.6 0"></a-entity>
+</a-scene>
     <a-scene background="color: #87CEEB">
       
       <a-assets>
