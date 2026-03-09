@@ -8,25 +8,30 @@
         init: function () {
           this.el.addEventListener('model-loaded', () => {
             const mesh = this.el.getObject3D('mesh');
-            // Adding .json extension here
             fetch('CBSE_X_SOC_L1_02Nationalism_Birth_dot_labels.json')
               .then(res => res.json())
               .then(data => {
-                data.labels.forEach(config => {
-                  const target = mesh.getObjectByName(config.name);
+                // JSON oka array kabatti, data.forEach direct ga pani chestundi
+                data.forEach((config, index) => {
+                  // Blender object name: Label-001 format lo undali
+                  const labelName = `Label-00${index + 1}`; 
+                  const target = mesh.getObjectByName(labelName);
+                  
                   if (target) {
                     const worldPos = new THREE.Vector3();
                     target.getWorldPosition(worldPos);
+                    
                     let textEl = document.createElement('a-text');
-                    textEl.setAttribute('value', config.title);
-                    textEl.setAttribute('position', `${worldPos.x} ${worldPos.y + 0.3} ${worldPos.z}`);
+                    // JSON lo unna text array nunchi first entry teeskuntundi
+                    textEl.setAttribute('value', config.text[0].text);
+                    textEl.setAttribute('position', `${worldPos.x} ${worldPos.y + 0.5} ${worldPos.z}`);
                     textEl.setAttribute('align', 'center');
                     textEl.setAttribute('color', 'yellow');
                     textEl.setAttribute('scale', '1.5 1.5 1.5');
                     this.el.sceneEl.appendChild(textEl);
                   }
                 });
-              }).catch(err => console.log("JSON Error: ", err));
+              }).catch(err => console.log("Logic Error: ", err));
           });
         }
       });
@@ -39,8 +44,7 @@
         <audio id="bgVoice" src="CBSE_X_SOC_L1_02Nationalism_Birth.mp3" preload="auto"></audio>
       </a-assets>
 
-      <a-entity gltf-model="#edu-model" map-labels position="0 1 -4" animation-mixer></a-entity>
-
+      <a-entity gltf-model="#edu-model" map-labels position="0 1.2 -4" animation-mixer></a-entity>
       <a-entity sound="src: #bgVoice; autoplay: true; volume: 1"></a-entity>
 
       <a-entity camera look-controls position="0 1.6 0">
