@@ -1,81 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <script>
-  AFRAME.registerComponent('map-labels', {
-    init: function () {
-      this.el.addEventListener('model-loaded', () => {
-        const mesh = this.el.getObject3D('mesh');
-        
-        fetch('CBSE_X_SOC_L1_02Nationalism_Birth_dot_labels.json') // Nee JSON file name
-          .then(res => res.json())
-          .then(data => {
-            data.labels.forEach(config => {
-              // Blender lo nuvvu ichina name (Label-001) ni vethukuthundi
-              const target = mesh.getObjectByName(config.name);
-              
-              if (target) {
-                // World coordinates teeskuntundi
-                const worldPos = new THREE.Vector3();
-                target.getWorldPosition(worldPos);
-
-                // Kotha 3D Text create chestundi
-                let textEl = document.createElement('a-text');
-                textEl.setAttribute('value', config.title);
-                textEl.setAttribute('position', `${worldPos.x} ${worldPos.y + 0.5} ${worldPos.z}`);
-                textEl.setAttribute('align', 'center');
-                textEl.setAttribute('color', 'red'); // Contrast kosam red pettanu
-                textEl.setAttribute('scale', '1.5 1.5 1.5');
-                
-                // Scene ki add chestundi
-                this.el.sceneEl.appendChild(textEl);
-              }
-            });
-          });
-      });
-    }
-  });
-</script>
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+    <script>
+      AFRAME.registerComponent('map-labels', {
+        init: function () {
+          this.el.addEventListener('model-loaded', () => {
+            const mesh = this.el.getObject3D('mesh');
+            // JSON File Name Updated here
+            fetch('CBSE_X_SOC_L1_02Nationalism_Birth_dot_labels.json')
+              .then(res => res.json())
+              .then(data => {
+                data.labels.forEach(config => {
+                  // Blender lo unna Label-001 names vethukuthundi
+                  const target = mesh.getObjectByName(config.name);
+                  if (target) {
+                    const worldPos = new THREE.Vector3();
+                    target.getWorldPosition(worldPos);
+                    let textEl = document.createElement('a-text');
+                    textEl.setAttribute('value', config.title);
+                    // Position adjustment for better visibility in VR
+                    textEl.setAttribute('position', `${worldPos.x} ${worldPos.y + 0.3} ${worldPos.z}`);
+                    textEl.setAttribute('align', 'center');
+                    textEl.setAttribute('color', 'yellow');
+                    textEl.setAttribute('scale', '1.5 1.5 1.5');
+                    this.el.sceneEl.appendChild(textEl);
+                  }
+                });
+              })
+              .catch(err => console.error("JSON Error:", err));
+          });
+        }
+      });
+    </script>
   </head>
   <body>
-    <a-scene lesson-labels>
-  <a-assets>
-    <a-asset-item id="edu-model" src="CBSE_X_SOC_L1_02Nationalism_Birth.glb"></a-asset-item>
-    
-    <audio id="bgVoice" src="CBSE_X_SOC_L1_02Nationalism_Birth.mp3" preload="auto"></audio>
-  </a-assets>
-
-  <a-entity gltf-model="#edu-model" position="0 1 -4" scale="1 1 1" animation-mixer></a-entity>
-
-  <a-entity sound="src: #bgVoice; autoplay: true; volume: 1"></a-entity>
-
-  <a-sky color="#87CEEB"></a-sky>
-  <a-entity camera look-controls position="0 1.6 0"></a-entity>
-</a-scene>
     <a-scene background="color: #87CEEB">
-      
       <a-assets>
         <a-asset-item id="edu-model" src="CBSE_X_SOC_L1_02Nationalism_Birth.glb"></a-asset-item>
+        <audio id="bgVoice" src="CBSE_X_SOC_L1_02Nationalism_Birth.mp3" preload="auto"></audio>
       </a-assets>
 
       <a-entity 
         gltf-model="#edu-model" 
-        position="0 1 -3" 
-        scale="1 1 1"
+        map-labels 
+        position="0 1 -4" 
         animation-mixer>
       </a-entity>
 
-      <a-plane position="0 0 0" rotation="-90 0 0" width="20" height="20" color="#7BC8A4"></a-plane>
+      <a-entity sound="src: #bgVoice; autoplay: true; volume: 1"></a-entity>
 
-      <a-entity light="type: ambient; intensity: 1.2"></a-entity>
-      <a-entity light="type: directional; intensity: 0.8" position="1 4 3"></a-entity>
-
-      <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
-      <a-entity oculus-touch-controls="hand: left"></a-entity>
-      <a-entity oculus-touch-controls="hand: right"></a-entity>
-      
+      <a-entity camera look-controls position="0 1.6 0">
+        <a-cursor color="red"></a-cursor>
+      </a-entity>
     </a-scene>
   </body>
 </html>
